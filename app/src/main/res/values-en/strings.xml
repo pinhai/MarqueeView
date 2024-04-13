@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarqueeView</string>
+    <string name="once_time">Scroll only once.</string>
+    <string name="repeat_continuous">Continuous, the current field is completely broadcast, and then broadcast.</string>
+    <string name="repeat_continuous_custom_interval">Continuous, the distance between two segments is set with marqueeview_item_distance.</string>
+    <string name="repeat_always_show">When all the right sides are displayed, the scrolling is finished, and the cycle is repeated.</string>
+    <string name="repeat_always_show_once_time">When all the right sides are displayed, the scrolling will end, only once.</string>
+</resources>
