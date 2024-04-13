@@ -218,7 +218,7 @@ public class MarqueeView extends View {
                     case REPEAT_ALWAYS_SHOW:
                     case REPEAT_ALWAYS_SHOW_ONCE_TIME:
                         if((paragraphWidth >= getShowAreaWidth() &&
-                            (paragraphWidth - getShowAreaWidth()) < (-xLocation+padding.left))){
+                            (paragraphWidth - getShowAreaWidth()) < (-xLocation+padding.left-5))){
                             //右边已经全部显示完成，暂停滚动
                             pauseScrollAfterFinish(repeatType == REPEAT_ALWAYS_SHOW_ONCE_TIME);
                         }
