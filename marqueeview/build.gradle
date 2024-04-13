@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath libs.gradle
+        classpath libs.agp
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
