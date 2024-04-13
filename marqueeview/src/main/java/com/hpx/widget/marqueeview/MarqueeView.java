@@ -33,8 +33,8 @@ public class MarqueeView extends View {
 
     private String content = "";
     private String finalContent;//最终要绘制的文本
-    private float speed = 2;//移动速度
-    private static final int SCROLL_INTERVAL_TIME = 20; //每次滚动的间隔时间，单位ms
+    private float speed = 1;//移动速度
+    private static final int SCROLL_INTERVAL_TIME = 10; //每次滚动的间隔时间，单位ms
     private int textColor = Color.BLACK;//文字颜色,默认黑色
     private float textSize = 12;//文字颜色,默认黑色
     private static final int paragraphIntervalInDp = 20;//段落默认间距，单位dp

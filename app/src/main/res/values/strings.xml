@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MarqueeView</string>
-    <string name="marquee_view_content_long">中国天气网讯 今明天（4月12日至13日），南方降水发展增强，江南多地将现强降雨，部分地区有暴雨，局地大暴雨，需警惕地质灾害的发生。</string>
+    <string name="marquee_view_content_long">中国天气网讯 今明天（4月12日至13日），南方降水发展增强，部分地区有暴雨，需警惕地质灾害的发生。</string>
     <string name="marquee_view_content_short">江南局地有大暴雨 华北多地逼近30℃</string>
     <string name="once_time">只滚动一次</string>
     <string name="repeat_continuous">连续的，当前字段完全播完，再接着播</string>
