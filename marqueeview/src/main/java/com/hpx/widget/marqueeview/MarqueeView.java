@@ -135,9 +135,11 @@ public class MarqueeView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        textHeight = getContentHeight();
 //        (float) getHeight() / 2 + textHeight / 2;
-        yLocation = getPadding().top + getContentHeight();
-        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),
-            getHeightSize(heightMeasureSpec));
+        int height = getHeightSize(heightMeasureSpec);
+        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec), height);
+
+        Rect padding = getPadding();
+        yLocation = padding.top + (float) (height - padding.top - padding.bottom) /2 + getContentHeight()/2;
     }
 
     private int getHeightSize(int measureSpec){
@@ -373,7 +375,9 @@ public class MarqueeView extends View {
     private Rect getPadding(){
         Rect result = new Rect();
         Rect bgPadding = new Rect();
-        getBackground().getPadding(bgPadding);
+        if(getBackground() != null){
+            getBackground().getPadding(bgPadding);
+        }
 
         if(getPaddingTop() != 0){
             result.top = getPaddingTop();
