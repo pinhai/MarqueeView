@@ -22,17 +22,10 @@ android {
             consumerProguardFiles 'consumer-rules.pro'
         }
     }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     publishing {
@@ -40,7 +33,17 @@ android {
             withSourcesJar()
         }
     }
+
+//    kotlin {
+//        jvmToolchain(17)
+//    }
 }
+
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(17)
+//    }
+//}
 
 publishing {
     publications {
@@ -58,4 +61,8 @@ publishing {
 
 dependencies {
     implementation libs.androidx.appcompat
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
