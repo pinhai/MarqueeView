@@ -1,4 +1,4 @@
-package com.hpx.widget.marqueeview;
+package com.hpx.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.TintTypedArray;
+
+import com.hpx.widget.marqueeview.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
