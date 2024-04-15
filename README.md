@@ -13,6 +13,6 @@ dependencyResolutionManagement {
 
 //模块build.gradle
 dependencies {
-    implementation 'com.github.pinhai:MarqueeView:1.0'
+    implementation 'com.github.pinhai:MarqueeView:1.0.2'
 }
 ```
