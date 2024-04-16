@@ -36,7 +36,7 @@
                 app:marqueeview_repeat_type="repeat_once_time"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.hpx.widget.MarqueeView
@@ -50,7 +50,7 @@
                 app:marqueeview_repeat_type="repeat_once_time"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -73,7 +73,7 @@
                 app:marqueeview_repeat_type="repeat_continuous"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.hpx.widget.MarqueeView
@@ -87,7 +87,7 @@
                 app:marqueeview_repeat_type="repeat_continuous"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -111,7 +111,7 @@
                 app:marqueeview_item_distance="50dp"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.hpx.widget.MarqueeView
@@ -126,7 +126,7 @@
                 app:marqueeview_item_distance="30dp"
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -149,7 +149,7 @@
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_stay_time_scroll_finished="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.hpx.widget.MarqueeView
@@ -164,7 +164,7 @@
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_stay_time_scroll_finished="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -187,7 +187,7 @@
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_stay_time_scroll_finished="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.hpx.widget.MarqueeView
@@ -202,7 +202,7 @@
                 app:marqueeview_stay_time_before_scroll="3000"
                 app:marqueeview_stay_time_scroll_finished="3000"
                 app:marqueeview_text_size="12"
-                app:marqueeview_text_speed="1"
+                app:marqueeview_text_speed="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

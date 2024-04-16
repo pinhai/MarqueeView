@@ -35,15 +35,17 @@ public class MarqueeView extends View {
 
     private String content = "";
     private String finalContent;//最终要绘制的文本
-    private float speed = 1;//移动速度
-    private static final int SCROLL_INTERVAL_TIME = 10; //每次滚动的间隔时间，单位ms
+    private final int STEP_IN_PX = 1;//每次滚动的距离，以像素为单位
+    private int scrollIntervalTime = 10; //每次滚动的间隔时间，以该参数来代表速度，单位ms
+    private static final int INTERVAL_TIME_MAX = 100;
+    private static final int INTERVAL_TIME_MIN = 1;
+
     private int textColor = Color.BLACK;//文字颜色,默认黑色
     private float textSize = 12;//文字颜色,默认黑色
     private static final int paragraphIntervalInDp = 20;//段落默认间距，单位dp
     private int paragraphIntervalInPx = 0;//段落间距，单位px
 
     private int paragraphWidth;//一段内容的宽度，REPEAT_CONTINUOUS模式中一段内容包括显示文本+一些空格
-//    private float textHeight;
 
     private int stayTimeBeforeScroll = 0; //滚动前停留的时间，单位ms
     private int stayTimeScrollFinished = 0;  //一次滚动循环结束后停留的时间，单位ms
@@ -55,7 +57,7 @@ public class MarqueeView extends View {
     private float xLocation = 0;//文本的x坐标
     private float yLocation = 0;
 
-    private boolean isScroll = false;//是否继续滚动
+    private boolean isScrolling = false;//是否正在滚动
 
     private TextPaint paint;//画笔
     private Rect textRect;
@@ -87,7 +89,7 @@ public class MarqueeView extends View {
             @Override
             public void onClick(View v) {
                 if (isClickPause) {
-                    if (isScroll) {
+                    if (isScrolling) {
                         stopScroll();
                     } else {
                         scroll();
@@ -105,8 +107,8 @@ public class MarqueeView extends View {
         content = tta.getString(R.styleable.MarqueeView_marqueeview_content);
         textColor = tta.getColor(R.styleable.MarqueeView_marqueeview_text_color, textColor);
         isClickPause = tta.getBoolean(R.styleable.MarqueeView_marqueeview_is_click_pause, isClickPause);
-        isResetLocation = tta.getBoolean(R.styleable.MarqueeView_marqueeview_is_resetLocation, isResetLocation);
-        speed = tta.getFloat(R.styleable.MarqueeView_marqueeview_text_speed, speed);
+        isResetLocation = tta.getBoolean(R.styleable.MarqueeView_marqueeview_is_reset_location, isResetLocation);
+        scrollIntervalTime = tta.getInt(R.styleable.MarqueeView_marqueeview_text_speed, scrollIntervalTime);
         textSize = tta.getFloat(R.styleable.MarqueeView_marqueeview_text_size, textSize);
         paragraphIntervalInPx = tta.getDimensionPixelSize(R.styleable.MarqueeView_marqueeview_item_distance, dp2px(paragraphIntervalInDp));
         startLocationDistance = tta.getFloat(R.styleable.MarqueeView_marqueeview_text_start_location_distance, startLocationDistance);
@@ -115,13 +117,15 @@ public class MarqueeView extends View {
         stayTimeScrollFinished = tta.getInteger(R.styleable.MarqueeView_marqueeview_stay_time_scroll_finished, stayTimeScrollFinished);
 
         tta.recycle();
+
+        setTextSpeed(scrollIntervalTime);
     }
 
     private void initPaint() {
-        paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);//初始化文本画笔
+        paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(textColor);//文字颜色值,可以不设定
-        paint.setTextSize(dp2px(textSize));//文字大小
+        paint.setColor(textColor);
+        paint.setTextSize(dp2px(textSize));
     }
 
     private void initScrollData(){
@@ -135,8 +139,6 @@ public class MarqueeView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        textHeight = getContentHeight();
-//        (float) getHeight() / 2 + textHeight / 2;
         int height = getHeightSize(heightMeasureSpec);
         setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec), height);
 
@@ -198,7 +200,7 @@ public class MarqueeView extends View {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                xLocation = xLocation - speed;
+                xLocation = xLocation - STEP_IN_PX;
                 Log.i(TAG, "initTimerSchedule-xLocation: "+xLocation);
 
                 Rect padding = getPadding();
@@ -242,7 +244,7 @@ public class MarqueeView extends View {
 
                 postInvalidate();
             }
-        }, stayTimeBeforeScroll, SCROLL_INTERVAL_TIME);
+        }, stayTimeBeforeScroll, scrollIntervalTime);
     }
 
     public void setRepeatType(int repeatType) {
@@ -259,10 +261,10 @@ public class MarqueeView extends View {
         }
 
 //        Log.i(TAG, "scroll-isScroll: "+isScroll);
-        if (!isScroll) {
+        if (!isScrolling) {
             stopTimer();
 
-            isScroll = true;
+            isScrolling = true;
             startTimerSchedule(); //开启死循环线程让文字动起来
         }
     }
@@ -271,7 +273,7 @@ public class MarqueeView extends View {
      * 停止滚动
      */
     private void stopScroll() {
-        isScroll = false;
+        isScrolling = false;
         stopTimer();
     }
 
@@ -319,8 +321,13 @@ public class MarqueeView extends View {
     /**
      * 设置滚动速度
      */
-    public void setTextSpeed(float speed) {
-        this.speed = speed;
+    public void setTextSpeed(int speed) {
+        if(speed < INTERVAL_TIME_MIN){
+            speed = INTERVAL_TIME_MIN;
+        }else if (speed > INTERVAL_TIME_MAX){
+            speed = INTERVAL_TIME_MAX;
+        }
+        this.scrollIntervalTime = speed;
     }
 
     /**
@@ -456,7 +463,6 @@ public class MarqueeView extends View {
             textRect = new Rect();
         }
         paint.getTextBounds(content, 0, content.length(), textRect);
-//        textHeight = getContentHeight();
 
         return textRect.width();
     }
