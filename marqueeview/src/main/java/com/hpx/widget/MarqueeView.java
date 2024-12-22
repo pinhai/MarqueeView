@@ -59,7 +59,7 @@ public class MarqueeView extends View {
 
     private boolean isScrolling = false;//是否正在滚动
 
-    private TextPaint paint;//画笔
+    private TextPaint paint; //画笔
     private Rect textRect;
 
     private int repeatCount = 0;
